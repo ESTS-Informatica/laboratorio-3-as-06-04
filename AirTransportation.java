@@ -20,7 +20,7 @@ public class AirTransportation extends Transport
         //x = 0;
         this.name = name;
         this.numberOfContainers = numberOfContainers;
-        setFees(4.0);
+        super.setFees(4.0);
     }
     
     public String getName(){
@@ -37,6 +37,28 @@ public class AirTransportation extends Transport
     
     public void setNumberOfContainers(int numberOfContainers){
         this.numberOfContainers = numberOfContainers;
+    }
+    
+    @Override
+    public String getTransportType() {
+        return "Transporte áereo";
+    }
+    
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+
+        sb.append(String.format("\n%15s: %s\n", "Tipo Transporte", getTransportType()));  
+        sb.append(String.format("%15s: %s\n", "ID", super.getId()));
+        sb.append(String.format("%15s: %s\n", "Origem", super.getOrigin()));
+        sb.append(String.format("%15s: %s\n", "Destino", super.getDestination()));
+        sb.append(String.format("%15s: %s\n", "Nome", getName()));
+        sb.append(String.format("%15s: %s\n", "Number of Containters", getNumberOfContainers()));
+        sb.append(String.format("%15s: %5.2f€\n", "Preço", super.getPrice()));
+        sb.append(String.format("%15s: %4.2f%%\n", "Honorarios", super.getFees()));
+        sb.append(String.format("%15s: %4.2f€\n", "Preço Final", super.getPriceWithFees()));
+     
+        return sb.toString();
     }
 
 
